@@ -8,7 +8,6 @@ public class Main {
 
         var context = new AnnotationConfigApplicationContext(config.ProjectConfig.class);
         var p = context.getBean(Parrot.class);
-        p.setName("Kiki");
         System.out.println(p.getName());
     }
 }
