@@ -10,16 +10,14 @@ public class ProjectConfig {
     @Bean
     public Parrot parrot(){
         Parrot p = new Parrot();
-        System.out.println("parrot created");
-        p.setName("Koko");
+        p.setName("koko");
         return p;
     }
     @Bean
-    public Person person() {
-        Person p = new Person();
-        p.setName("Ella");
-        p.setParrot(parrot());
-        return p;
+    public Person person(Parrot parrot){
+    Person person = new Person();
+    person.setName("Johan");
+    person.setParrot(parrot);
+    return person;
     }
-
 }
