@@ -13,7 +13,7 @@ public class Main {
         y.setName("Kiki");
         Supplier<Parrot> parrotSupplier = () -> y;
         context.registerBean("parrot1",
-                Parrot.class, parrotSupplier);
+                Parrot.class, parrotSupplier, e-> e.setPrimary(true));
         Parrot p = context.getBean(Parrot.class);
         System.out.println(p.getName());
     }
