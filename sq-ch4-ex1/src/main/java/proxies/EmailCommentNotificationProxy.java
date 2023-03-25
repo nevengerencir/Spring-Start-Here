@@ -1,9 +1,11 @@
 package proxies;
 
 import model.Comment;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+
 public class EmailCommentNotificationProxy implements CommentProxy {
     private String db;
 

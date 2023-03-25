@@ -10,9 +10,9 @@ public class CommentService {
     private final CommentRepository repository;
     private final CommentProxy proxy;
 @Autowired
-    public CommentService(CommentRepository repository, CommentProxy proxy) {
+    public CommentService(CommentRepository repository, CommentProxy commentPushNotificationProxy) {
         this.repository = repository;
-        this.proxy = proxy;
+        this.proxy = commentPushNotificationProxy;
     }
 
     public void publishComment(Comment comment) {
