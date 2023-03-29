@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 public class CommentService {
     private Logger logger = LoggerFactory.getLogger(CommentService.class);
 
-    public void publishComment(Comment comment){
+    public String publishComment(Comment comment){
 logger.info("Publishing comment: " + comment.getText());
+return "Sucess";
     }
 }

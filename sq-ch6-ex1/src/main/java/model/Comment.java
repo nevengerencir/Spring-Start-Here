@@ -16,6 +16,14 @@ public class Comment {
         return text;
     }
 
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "text='" + text + '\'' +
+                ", author='" + author + '\'' +
+                '}';
+    }
+
     public void setText(String text) {
         this.text = text;
     }
