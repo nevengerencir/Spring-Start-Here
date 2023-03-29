@@ -6,12 +6,15 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 
 @Aspect
 @Component
+@Order(2)
+
 public class LoggingAspect {
     private Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
