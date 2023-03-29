@@ -21,4 +21,5 @@ public class Main {
             comment.setText("I am a comment without an author");
             String value = service.publishComment(comment);
             logger.info(value);
+            service.deleteComment(comment);
         }}

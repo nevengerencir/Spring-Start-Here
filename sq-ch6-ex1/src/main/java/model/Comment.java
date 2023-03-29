@@ -17,6 +17,7 @@ public class Comment {
     }
 
     @Override
+
     public String toString() {
         return "Comment{" +
                 "text='" + text + '\'' +

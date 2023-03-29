@@ -12,5 +12,12 @@ public class CommentService {
     public String publishComment(Comment comment){
 logger.info("Publishing comment: " + comment.getText());
 return "Sucess";
+
     }
+    @ToLog
+    public void deleteComment(Comment comment) {
+        logger.info("Deleting comment:" + comment.getText());
+    }
+
+
 }

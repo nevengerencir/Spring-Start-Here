@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class LoggingAspect {
     private Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Around("execution(* service.*.*(..))")
+    @Around("@annotation(service.ToLog)")
 
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = joinPoint.getSignature().getName();
