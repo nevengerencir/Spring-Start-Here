@@ -27,9 +27,9 @@ public class LoggingAspect {
         Comment comment = new Comment();
         comment.setText("Some other text!");
         Object [] newArguments = {comment};
-        Object returnObject = joinPoint.proceed(newArguments);
+        joinPoint.proceed(newArguments);
         logger.info("Method " + methodName + "with parameters " + Arrays.asList(comment) + " is executed.");
-        return  returnObject;
+        return  "I am the aspect number 2 String return value";
 
     }
 }

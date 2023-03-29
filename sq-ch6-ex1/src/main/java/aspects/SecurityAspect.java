@@ -18,7 +18,8 @@ public class SecurityAspect {
     @Around("@annotation(service.ToLog)")
     public String securityCheck(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info("Security aspect firing off.");
-        joinPoint.proceed();
+        Object returnedValue = joinPoint.proceed();
+        logger.error(returnedValue.toString());
         return "Security Aspect logging out.";
 
     }
