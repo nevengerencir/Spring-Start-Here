@@ -19,6 +19,5 @@ public class Main {
             var service = context.getBean(CommentService.class);
             Comment comment = new Comment();
             comment.setText("I am a comment without an author");
-
             service.deleteComment(comment);
-        }}
+        }};
