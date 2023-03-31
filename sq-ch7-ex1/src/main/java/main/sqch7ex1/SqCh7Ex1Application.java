@@ -9,6 +9,8 @@ public class SqCh7Ex1Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SqCh7Ex1Application.class, args);
+		int integer = 3 / 2;
+		System.out.println(integer);
 	}
 
 }
