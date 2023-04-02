@@ -4,17 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 import sqch9ex1.main.services.LoggedUserManagementService;
+import sqch9ex1.main.services.LoginCountService;
 
 
 @Component
 @RequestScope
 public class LoginProcessor {
+    private final LoginCountService loginCountService;
     private final LoggedUserManagementService loggedUserManagementService;
     private String username;
     private String password;
     public LoginProcessor(
-            LoggedUserManagementService loggedUserManagementService) {
+            LoggedUserManagementService loggedUserManagementService, LoginCountService loginCountService) {
         this.loggedUserManagementService = loggedUserManagementService;
+        this.loginCountService = loginCountService;
     }
     public boolean login() {
         if (loggedUserManagementService.getUsername() != null){
@@ -25,6 +28,8 @@ public class LoginProcessor {
         boolean loginResult = false;
         if ("natalie".equals(username) && "password".equals(password)) {
             loginResult = true;
+            loginCountService.count();
+            System.out.println(loginCountService.getCount());
             loggedUserManagementService.setUsername(username);
         }
         return loginResult;
