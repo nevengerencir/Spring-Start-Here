@@ -7,6 +7,13 @@ public class PaymentDetails {
         return amount;
     }
 
+    @Override
+    public String toString() {
+        return "PaymentDetails{" +
+                "amount=" + amount +
+                '}';
+    }
+
     public void setAmount(double amount) {
         this.amount = amount;
     }
