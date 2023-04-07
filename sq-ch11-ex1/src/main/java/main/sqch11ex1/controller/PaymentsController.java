@@ -1,5 +1,6 @@
 package main.sqch11ex1.controller;
 
+import main.sqch11ex1.exceptions.NotEnoughMoneyException;
 import main.sqch11ex1.model.Payment;
 import main.sqch11ex1.proxy.PaymentsProxy;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,9 @@ public class PaymentsController {
             @RequestHeader String requestId,
             @RequestBody Payment payment
     ) {
+        if (!requestId.equals("123")){
+            throw new NotEnoughMoneyException();
+        }
         System.out.println(requestId);
         return paymentsProxy.createPayment(requestId,payment);
     }}
