@@ -1,5 +1,6 @@
 package com.example.todo.controllers;
 
+import com.example.todo.exceptions.WrongPathException;
 import com.example.todo.models.Task;
 import com.example.todo.repositories.TaskRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +22,12 @@ public class TaskController {
     ){
         return taskRepository.findAllTasks();
     };
-    @GetMapping("/tasks/{id}")
+    @GetMapping("/task/{id}")
 
-    public Task findTask( @PathVariable String id
-    ){
+    public Task findTask( @PathVariable int id
+    ){if(id==0){
+        throw new WrongPathException();
+    }
         return taskRepository.findTask(id);
     };
 }

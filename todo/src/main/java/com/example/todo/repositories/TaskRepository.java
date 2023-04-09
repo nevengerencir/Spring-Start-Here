@@ -1,5 +1,6 @@
 package com.example.todo.repositories;
 
+
 import com.example.todo.models.Task;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,7 +22,7 @@ public class TaskRepository {
         return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class));
     }
 
-    public Task findTask(String id){
+    public Task findTask(int id){
         String sql = "Select * FROM tasks WHERE id = ?";
         return jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Task.class),id);
     }
