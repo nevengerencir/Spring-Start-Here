@@ -20,4 +20,9 @@ public class TaskRepository {
 
         return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class));
     }
+
+    public Task findTask(String id){
+        String sql = "Select * FROM tasks WHERE id = ?";
+        return jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Task.class),id);
+    }
 }
