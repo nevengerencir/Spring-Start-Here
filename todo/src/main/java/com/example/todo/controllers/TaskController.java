@@ -20,9 +20,19 @@ public class TaskController {
 
     @GetMapping("/tasks")
     public List<Task> findAllTasks(
-            @RequestParam(required = false) String person
+            @RequestParam(required = false) String person,
+             @RequestParam(required = false) String completed
     ){
-        if(person!=null){
+        if(completed!=null && person!=null ){
+
+            return taskRepository.findAllTasksByPersonAndCompleted(person,completed);
+        }
+        if(completed!=null){
+
+            return taskRepository.findAllTaskByCompleted(completed);
+        }
+        if(person != null){
+
             return taskRepository.findAllTasksByPerson(person);
         }
         return taskRepository.findAllTasks();

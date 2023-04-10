@@ -18,26 +18,23 @@ public class TaskRepository {
 
     public List<Task> findAllTasks(){
         String sql = "SELECT * FROM tasks";
-
+        System.out.println(sql);
         return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class));
     }
-    public List<Task> findAllCompletedTasks(){
-        String sql = "SELECT * FROM tasks completed=true";
-
-        return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class));
-    }
-    public List<Task> findAllTaskByCompleted(boolean completed){
+    public List<Task> findAllTaskByCompleted(String completed){
         String sql = "SELECT * FROM tasks WHERE completed=?";
-
+        System.out.println(sql);
         return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class),completed);
     }
     public List<Task> findAllTasksByPerson(String person){
         String sql = "SELECT * FROM tasks WHERE person=?";
 
+
         return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class),person);
     }
-    public List<Task> findAllTasksByPersonAndCompleted(String person, boolean completed){
+    public List<Task> findAllTasksByPersonAndCompleted(String person, String completed){
         String sql = "SELECT * FROM tasks WHERE person=? AND completed=?";
+
 
         return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class),person,completed);
     }
