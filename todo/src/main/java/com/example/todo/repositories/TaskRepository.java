@@ -21,9 +21,35 @@ public class TaskRepository {
 
         return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class));
     }
+    public List<Task> findAllCompletedTasks(){
+        String sql = "SELECT * FROM tasks completed=true";
+
+        return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class));
+    }
+    public List<Task> findAllTaskByCompleted(boolean completed){
+        String sql = "SELECT * FROM tasks WHERE completed=?";
+
+        return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class),completed);
+    }
+    public List<Task> findAllTasksByPerson(String person){
+        String sql = "SELECT * FROM tasks WHERE person=?";
+
+        return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class),person);
+    }
+    public List<Task> findAllTasksByPersonAndCompleted(String person, boolean completed){
+        String sql = "SELECT * FROM tasks WHERE person=? AND completed=?";
+
+        return jdbc.query(sql, new BeanPropertyRowMapper<>(Task.class),person,completed);
+    }
 
     public Task findTask(int id){
         String sql = "Select * FROM tasks WHERE id = ?";
         return jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Task.class),id);
+    }
+
+    public Task UpdateTaskCompletedColumn(boolean completed, int id){
+        String sql ="UPDATE tasks SET completed=? WHERE id = ?";
+        jdbc.update(sql,completed,id);
+        return findTask(id);
     }
 }
