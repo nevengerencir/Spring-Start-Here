@@ -44,9 +44,8 @@ public class TaskRepository {
         return jdbc.queryForObject(sql, new BeanPropertyRowMapper<>(Task.class),id);
     }
 
-    public Task UpdateTaskCompletedColumn(boolean completed, int id){
+    public void UpdateTaskCompletedColumn(String completed, int id){
         String sql ="UPDATE tasks SET completed=? WHERE id = ?";
         jdbc.update(sql,completed,id);
-        return findTask(id);
     }
 }
