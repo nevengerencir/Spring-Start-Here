@@ -48,4 +48,12 @@ public class TaskRepository {
         String sql ="UPDATE tasks SET completed=? WHERE id = ?";
         jdbc.update(sql,completed,id);
     }
+    public void addTask(Task task){
+        String sql = "INSERT INTO tasks (person,description) VALUES (?, ?)";
+        jdbc.update(sql,task.getPerson(),task.getDescription());
+    }
+    public void deleteTask(String id){
+        String sql ="DELETE FROM tasks WHERE id=?";
+        jdbc.update(sql,id);
+    }
 }

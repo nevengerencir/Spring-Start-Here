@@ -45,8 +45,22 @@ public class TaskController {
     }
 
     @PatchMapping("/task/{id}")
-    public Task updateTaskByCompleted(@PathVariable int id, @RequestParam String completed){
-        taskRepository.UpdateTaskCompletedColumn(completed,id);
+    public Task updateTaskByCompleted(@PathVariable int id, @RequestParam String completed) {
+        taskRepository.UpdateTaskCompletedColumn(completed, id);
         return findTask(id);
+    }
+
+    @PostMapping("/task")
+
+    public void addTask(@RequestBody Task task, @RequestHeader String person) {
+        task.setPerson(person);
+        taskRepository.addTask(task);
+        taskRepository.findAllTasks();
+    }
+
+    @DeleteMapping("task/{id}")
+    public void deleteTask(@PathVariable String id) {
+        taskRepository.deleteTask(id);
+        taskRepository.findAllTasks();
     }
 }
