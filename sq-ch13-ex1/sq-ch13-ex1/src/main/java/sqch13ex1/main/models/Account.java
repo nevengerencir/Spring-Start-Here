@@ -1,17 +1,13 @@
 package sqch13ex1.main.models;
 
+import org.springframework.data.annotation.Id;
+
 import java.math.BigDecimal;
 
 public class Account {
-    private long id;
+    @Id
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
